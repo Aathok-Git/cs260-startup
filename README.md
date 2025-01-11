@@ -1,8 +1,8 @@
-# Your startup name here
+# Wordle With Friends!
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This website will allow a user to create a login, and to submit their wordle score once per day (local time) and be able to compare their scores with other people of their choosing. By inputting the username of another person, they will be able to see them on their "friends list" and be able to compare scores with them. The website will automatically check with the worldle website (hopefully) and confirm that the user is submitting the correct day's wordle. The friends list display will show the score of their friends only after the user has submitted their own score, and will show their score for the day, as well as their average score for all scores submitted.
 
 
 > [!NOTE]
