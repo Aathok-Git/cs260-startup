@@ -40,6 +40,10 @@ sequenceDiagram
     actor Website
     User->>Website: Replace this with your design
     User->>login: Enter login information
+    login->>Website: Authenticate User
+    Website->>Website: Store authentication data
+    Website->>Endpoint: Retrieve the number of the local day's wordle
+    Website->>User: Get local time
 ```
 
 ### Key features
