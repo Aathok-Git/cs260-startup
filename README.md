@@ -38,12 +38,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 sequenceDiagram
     actor User
     actor Website
-    User->>Website: Replace this with your design
     User->>login: Enter login information
     login->>Website: Authenticate User
     Website->>Website: Store authentication data
     Website->>Endpoint: Retrieve the number of the local day's wordle
     Website->>User: Get local time
+    User->>Website: Submit Score
+    User->>Website: Request a new friend to add to scoreboard
+    Website->>Website: Retrieve a users scores for themselves or a friend's scoreboard
+    Website->>User: Display scores of user and all user's friends in a leaderboard
 ```
 
 ### Key features
