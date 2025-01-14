@@ -18,15 +18,15 @@ This website will allow a user to create a login, and to submit their wordle sco
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [X] Proper use of Markdown
+- [X] A concise and compelling elevator pitch
+- [X] Description of key features
+- [X] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This website will provide a means for individuals to submit their daily Wordle scores and compare them to the scores of their friends. The website will show a daily scoreboard of the wordle for the day, as well as a scoreboard of the average score for the account.
 
 ### Design
 
@@ -36,27 +36,28 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor User
     actor Website
-    You->>Website: Replace this with your design
+    User->>Website: Replace this with your design
+    User->>login: Enter login information
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Will have a login page and will save the login
+- Will allow a users to submit a score once per day in local time (if I can't figure out a local time, I'll say when the leaderboard resets)
+- Allow users to friend others and the website will display the friends' scores.
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Website page with a login page, a submit page, and a scoreboard page. Login and submit will take
+- **CSS** - Default dark mode, pretty buttons, etc.
+- **React** - Button to add a friend to their leaderboard list
+- **Service** - login authentication, save scores and calculate average, check w/ the wordle website to determine when to allow users to submit the next day's score.
+- **DB/Login** - account and login, username will be accessed by others to add to friends list.
+- **WebSocket** - updates the page when a friend submits a score.
 
 ## 🚀 AWS deliverable
 
