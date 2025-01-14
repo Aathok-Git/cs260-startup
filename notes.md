@@ -15,3 +15,4 @@ Domain hasn't been obtained yet. Will obtain domain name once startup pitch is a
 ## HTML Notes
 
 No HTML has been coded yet, awaiting further instruction.
+
