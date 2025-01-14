@@ -47,6 +47,7 @@ sequenceDiagram
     User->>Website: Request a new friend to add to scoreboard
     Website->>Website: Retrieve a users scores for themselves or a friend's scoreboard
     Website->>User: Display scores of user and all user's friends in a leaderboard
+    Website->>Website: Verify a user submits valid data
 ```
 
 ### Key features
