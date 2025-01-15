@@ -30,7 +30,7 @@ This website will provide a means for individuals to submit their daily Wordle s
 
 ### Design
 
-![Design image](Rough_Sketch.png)
+![Design image](Rough_Sketch.jpg)
 
 
 
