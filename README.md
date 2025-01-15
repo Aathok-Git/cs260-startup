@@ -30,9 +30,9 @@ This website will provide a means for individuals to submit their daily Wordle s
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](Rough_Sketch.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 
 ```mermaid
 sequenceDiagram
@@ -41,8 +41,10 @@ sequenceDiagram
     User->>login: Enter login information
     login->>Website: Authenticate User
     Website->>Website: Store authentication data
-    Website->>Endpoint: Retrieve the number of the local day's wordle
-    Website->>User: Get local time
+    Website->>Endpoint: Request the number of the local day's wordle
+    Endpoint->>Website: Send the number of the local day's wordle
+    Website->>User: Request local time
+    User->>Website: Send local time
     User->>Website: Submit Score
     User->>Website: Request a new friend to add to scoreboard
     Website->>Website: Retrieve a users scores for themselves or a friend's scoreboard
