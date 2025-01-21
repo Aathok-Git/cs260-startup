@@ -10,14 +10,27 @@
 
 ## AWS Notes
 
-Domain hasn't been obtained yet. Will obtain domain name once startup pitch is approved.
+Use Route53 DNS to get the domain and use an EC2 Web Server
 
 ## HTML Notes
 
-No HTML has been coded yet, awaiting further instruction.
+Default page should return an html doc called index.html
 
 ## AI Notes
 
 - Don't use anything you don't understand
 - Ask AI to explain it and then rewrite the function from scratch
 - Ask AI to critique my code
+
+## Network Notes
+- The S in HTTPS stands for "secure"
+
+## DNS Notes
+- The DNS stores the IP address for different domain names so users don't need to memorize the IP to the websites they want to visit, just the domain name. DNS returns the IP to the computer so the computer can make the connection.
+
+## Codepen Notes
+- Try to experiment with codepen often
+
+### Codepen Links
+- Lorem ipsum dolor....
+
