@@ -14,7 +14,18 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 
 ## HTML Notes
 
-Default page should return an html doc called index.html
+- Default page should return an html doc called index.html
+- 
+
+## CSS Notes
+- CSS determines how the page should render the HTML.
+- The style element in CSS affects all the text in the HTML
+- An inline style will override the global style
+- the reference in html has to match the name of the CSS file
+- use something like `<link rel="stylesheet" href="styles.css" />`
+- In css, declare the type of tag you want the style to affect (called a selector)
+- can import fonts with the `@import url('google font url')`
+
 
 ## AI Notes
 
@@ -32,5 +43,6 @@ Default page should return an html doc called index.html
 - Try to experiment with codepen often
 
 ### Codepen Links
-- Lorem ipsum dolor....
+- Default Assignment for Codepen: https://codepen.io/Luke-Martinez/pen/XJrxaaB
+
 
