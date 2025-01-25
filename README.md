@@ -80,14 +80,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] **HTML pages** - Created pages for each feature of my website.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
+- [X] **Proper HTML element usage** - I studied HTML elements and implemented tags such as: anchor, paragraph, div, form, h1, header, footer, main, menu, span, button, etc.
 - [X] **Links** - Had Navigable directory for the website and also linked to the wordle website.
-- [ ] **Text** - I did not complete this part of the deliverable.
+- [ ] **Text** - About page has text
 - [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
 - [ ] **Images** - I did not complete this part of the deliverable.
 - [X] **Login placeholder** - Contained in main HTML
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [X] **DB data placeholder** - scores placeholder displayed on disp_scores.html
+- [X] **WebSocket placeholder** - placeholder for notifications for when friends submit scores on disp_scores.html
 
 ## 🚀 CSS deliverable
 
