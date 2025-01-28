@@ -48,15 +48,19 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 ## Responsive Design notes
 - Use it to help the webpage be rendered differently on different sized displays and still look good.
 - use: 
-    - ```<meta 
+    - ```html
+    <meta 
         name ="viewport"
-        content ="width=device-width, initial-scale =1/>```
-    - ```aside {
+        content ="width=device-width, initial-scale =1/>
+        ```
+    - ```html
+        aside {
         float: right;
         padding: 3em;
         margin: 0.5em;
         border: lack solid thin;
-        }```
+        }
+        ```
         - these variables can be changed but should be present.
         - 3em will make it three times the size of the default letter m, so it's very variable
     - `none`
