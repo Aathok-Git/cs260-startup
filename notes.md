@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup](https://simon.cs260.click)
+[My startup](https://startup.lukemartinez.click)
 
 ## Helpful links
 
@@ -45,4 +45,22 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 ### Codepen Links
 - Default Assignment for Codepen: https://codepen.io/Luke-Martinez/pen/XJrxaaB
 
-
+## Responsive Design notes
+- Use it to help the webpage be rendered differently on different sized displays and still look good.
+- use: 
+    - ```<meta 
+        name ="viewport"
+        content ="width=device-width, initial-scale =1/>```
+    - ```aside {
+        float: right;
+        padding: 3em;
+        margin: 0.5em;
+        border: lack solid thin;
+        }```
+        - these variables can be changed but should be present.
+        - 3em will make it three times the size of the default letter m, so it's very variable
+    - `none`
+    - `block`
+    - `inline`
+    - `flex`
+    - `grid`
