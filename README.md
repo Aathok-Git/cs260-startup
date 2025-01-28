@@ -83,8 +83,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [X] **Proper HTML element usage** - I studied HTML elements and implemented tags such as: anchor, paragraph, div, form, h1, header, footer, main, menu, span, button, etc.
 - [X] **Links** - Had Navigable directory for the website and also linked to the wordle website.
 - [X] **Text** - About page has text
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [X] **3rd party API placeholder** - Button to get a random word on about page.
+- [X] **Images** - Image on the about page.
 - [X] **Login placeholder** - Contained in main HTML
 - [X] **DB data placeholder** - scores placeholder displayed on disp_scores.html
 - [X] **WebSocket placeholder** - placeholder for notifications for when friends submit scores on disp_scores.html
