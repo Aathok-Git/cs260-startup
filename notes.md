@@ -48,12 +48,12 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 ## Responsive Design notes
 - Use it to help the webpage be rendered differently on different sized displays and still look good.
 - use: 
-    - ```html
-    <meta 
+    - ```css
+        <meta 
         name ="viewport"
         content ="width=device-width, initial-scale =1/>
         ```
-    - ```html
+    - ```css
         aside {
         float: right;
         padding: 3em;
@@ -68,3 +68,22 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
     - `inline`
     - `flex`
     - `grid`
+
+    - ```css
+        .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, lfr))
+        grid-auto-rows: 300px; /* Sets the row to 300px regardless of display size */
+        grid-gap: 1em; /* The Gap between grids is the size of 1 oetter m */
+        }
+    ```
+    Flex:
+    - ```css
+        .container {
+            display: flex;
+        }
+
+        .item {
+            flex: 0 0 50px; /* variables are grow, shrink, basis*/
+        }
+    ```
