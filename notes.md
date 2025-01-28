@@ -44,6 +44,7 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 
 ### Codepen Links
 - Default Assignment for Codepen: https://codepen.io/Luke-Martinez/pen/XJrxaaB
+- Flexbox Assignment: https://codepen.io/Luke-Martinez/pen/JoPxGPN
 
 ## Responsive Design notes
 - Use it to help the webpage be rendered differently on different sized displays and still look good.
@@ -76,7 +77,7 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
         grid-auto-rows: 300px; /* Sets the row to 300px regardless of display size */
         grid-gap: 1em; /* The Gap between grids is the size of 1 oetter m */
         }
-    ```
+        ```
     Flex:
     - ```css
         .container {
@@ -84,6 +85,14 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
         }
 
         .item {
-            flex: 0 0 50px; /* variables are grow, shrink, basis*/
+            flex: 0 0 50px; /* variables are grow, shrink, basis. grow and shrink are fractional units, and basis is the base size.*/
         }
-    ```
+        ```
+    Media:
+    - ```css
+        @media (orientation: portrait) { /* can also be landscape. Will override other css if in this orientation */
+            body {
+                flex-direction: column;
+            }
+        }
+        ```
