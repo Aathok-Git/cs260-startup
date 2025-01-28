@@ -82,7 +82,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [X] **HTML pages** - Created pages for each feature of my website.
 - [X] **Proper HTML element usage** - I studied HTML elements and implemented tags such as: anchor, paragraph, div, form, h1, header, footer, main, menu, span, button, etc.
 - [X] **Links** - Had Navigable directory for the website and also linked to the wordle website.
-- [ ] **Text** - About page has text
+- [X] **Text** - About page has text
 - [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
 - [ ] **Images** - I did not complete this part of the deliverable.
 - [X] **Login placeholder** - Contained in main HTML
