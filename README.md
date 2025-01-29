@@ -81,7 +81,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [X] **HTML pages** - Created pages for each feature of my website.
 - [X] **Proper HTML element usage** - I studied HTML elements and implemented tags such as: anchor, paragraph, div, form, h1, header, footer, main, menu, span, button, etc.
-- [X] **Links** - Had Navigable directory for the website and also linked to the wordle website.
+- [X] **Links** - Has Navigable directory for the website and also linked to the wordle website.
 - [X] **Text** - About page has text
 - [X] **3rd party API placeholder** - Button to get a random word on about page.
 - [X] **Images** - Image on the about page.
