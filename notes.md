@@ -96,3 +96,7 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
             }
         }
         ```
+
+## JavaScript Notes
+-  Interpretive
+- On every web browser and here to stay.
