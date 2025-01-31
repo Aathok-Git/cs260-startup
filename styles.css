@@ -1,0 +1,69 @@
+
+  
+
+
+
+
+.inline{
+    font-size:2em;
+    text-align: center;
+    display: inline-flex;
+    color:antiquewhite;
+    background-color:darkblue;
+    padding: 2%;
+    flex:1;
+}
+
+
+html {
+    background-color:rgb(156, 164, 173);
+    display: flex;
+}
+
+header {
+    background-color:darkblue;
+    flex: 0, 80px;
+}
+
+header > p {
+    font-size:3em;
+    text-align: center;
+    color:antiquewhite;
+}
+
+
+
+menu {
+    background-color: darkblue;
+}
+
+
+
+table {
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    flex:1;
+    
+}
+
+tr {
+    padding: 10%;
+}
+
+td {
+    text-align: center;
+}
+
+
+
+
+footer {
+    background-color: darkblue ;
+    align-self: baseline;
+    align-items: baseline;
+    color:antiquewhite;
+    font-size:1.5em;
+    flex:0,30px;
+    flex-direction: row;
+}
