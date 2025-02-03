@@ -1,8 +1,8 @@
 
-  
-
-
-
+* {
+    margin: 0;
+    padding: 0;
+}
 
 .inline{
     font-size:2em;
@@ -23,6 +23,7 @@ html {
 header {
     background-color:darkblue;
     flex: 0, 80px;
+    margin:0;
 }
 
 header > p {
@@ -36,6 +37,14 @@ header > p {
 menu {
     background-color: darkblue;
 }
+
+
+body {
+    width:100%;
+    margin:0;
+    padding: 0;
+}
+
 
 
 
