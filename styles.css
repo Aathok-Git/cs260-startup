@@ -41,11 +41,23 @@ menu {
 
 body {
     width:100%;
-    margin:0;
-    padding: 0;
+    height:100vh;
+}
+
+main {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 
+form {
+    width:50%;
+    margin:auto;
+
+}
 
 
 table {
@@ -53,15 +65,22 @@ table {
     margin-left: auto;
     margin-right: auto;
     flex:1;
-    
+    border:2px solid black;
+    border-collapse:collapse;
+    width:75%;
 }
 
 tr {
     padding: 10%;
+    border:1px solid black;
+
 }
 
-td {
+td, th{
+    padding:2%;
     text-align: center;
+    border:1px solid black;
+
 }
 
 
@@ -69,8 +88,9 @@ td {
 
 footer {
     background-color: darkblue ;
-    align-self: baseline;
-    align-items: baseline;
+    position:absolute;
+    bottom:0;
+    width:100%;
     color:antiquewhite;
     font-size:1.5em;
     flex:0,30px;
