@@ -7,17 +7,81 @@
 .inline{
     font-size:2em;
     text-align: center;
-    display: inline-flex;
     color:antiquewhite;
     background-color:darkblue;
     padding: 2%;
     flex:1;
+    width:fit-content;
+}
+
+.login-header {
+    background: #28d;
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .login-container {
+    background: #ebebeb;
+    padding: 12px;
+  }
+
+  .login div {
+    padding: 12px;
+  }
+
+  .login input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+  }
+
+  .login input:focus {
+  border-color: #888;
+}
+
+.login button {
+    background: rgb(30, 137, 224);
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    width:90%;
+    
+  }
+
+.login button:hover {
+    background:rgb(26, 117, 192)
+}
+
+.random-button {
+    background:#ebebeb;
+    border-color:gray;
+    color:#000;
+    cursor:pointer;
+    padding:1%;
+}
+
+.random-button:hover {
+    background:#dbdbdb;
+}
+
+.users {
+    align-self: flex-start;
+    align-items: flex-start;
 }
 
 
 html {
     background-color:rgb(156, 164, 173);
-    display: flex;
 }
 
 header {
@@ -36,6 +100,11 @@ header > p {
 
 menu {
     background-color: darkblue;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 
@@ -55,9 +124,7 @@ main {
 
 
 form {
-    width:50%;
     margin:auto;
-
 }
 
 
@@ -88,12 +155,37 @@ td, th{
 
 
 footer {
-    background-color: darkblue ;
+    background: hsl(180, 30%, 15%);
     position:absolute;
     bottom:0;
     width:100%;
     color:antiquewhite;
     font-size:1.5em;
-    flex:0,30px;
+    flex:0,0,30px;
+    display:flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}   
+
+footer span {
+    padding-right: 0.5em;
 }
+
+
+
+@media (orientation: portrait) { /* can also be landscape. Will override other css if in this orientation */
+    main {
+        flex-direction: row;
+    }
+}
+
+@media (max-height: 700px) {
+    header p {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+  }
+  
