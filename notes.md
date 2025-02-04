@@ -59,7 +59,7 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
         float: right;
         padding: 3em;
         margin: 0.5em;
-        border: lack solid thin;
+        border: black solid thin;
         }
         ```
         - these variables can be changed but should be present.
@@ -100,3 +100,58 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 ## JavaScript Notes
 -  Interpretive
 - On every web browser and here to stay.
+
+
+
+## React Notes
+- JS tool to
+ - simplify common patterns
+ - provide comon components
+ - improve performance
+ - increase device coverage
+
+
+## JSX Notes
+- combines JavaScript and HTML
+- JSX
+- ```JSX
+     const jsx = <p>Hello World</p>
+     ```
+- Babel transpiles to JS
+- ```JS
+     const jsx = React.createElement("p", null, "Hello World");
+     ```
+- Browser renders to the DOM
+- ```html
+     <p> Hello World</p>
+     ```
+- Here's an example
+- ```JSX
+    function Hello({greeting="wassup", phrase}) {
+        return <div>
+        <p>{greeting} {phrase}</p>
+        </div>
+    };
+
+    const root = ReactDOM.createRoot(document,querySelector('#root'));
+    root.render(<div><Hello greeting="Hello" phrase="friends" /><Hello gretting="goodbye" phrase="enemies"></div>)
+    ```
+
+### State
+```JSX
+    const Hello = () => {
+        const {color, setColor} = React.useState("red");
+
+        function changeColor() {
+            setColor (color === "red" ? "green" : "red");
+        }
+
+        return (
+            <div>
+                <p style={{ color: color}}>Hello React</p>
+                <button onClick={changeColor}>change</button>
+            </div>
+        );
+    };
+    ```
+
