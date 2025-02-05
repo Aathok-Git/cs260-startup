@@ -2,13 +2,14 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Franklin Gothic Medium, Franklin Gothic, ITC Franklin Gothic, Arial, sans-serif
 }
 
 .inline{
     font-size:2em;
     text-align: center;
     color:antiquewhite;
-    background-color:darkblue;
+    background-color:transparent;
     padding: 2%;
     flex:1;
     width:fit-content;

@@ -96,9 +96,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [X] **Header, footer, and main content body** - Responsively sized, title and footer disappear on small screens.
 - [X] **Navigation elements** - Navigation bar is always visible and allows access to the whole website
 - [X] **Responsive to window resizing** - Works on all but really really small screens.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [X] **Application elements** - Used display:flex as well as lots of classes to get things to line up right
+- [X] **Application text content** - Used the Franklin Gothic font, which is the same font that WORDLE uses.
+- [X] **Application images** - The about image is unchanged.
 
 ## 🚀 React part 1: Routing deliverable
 
