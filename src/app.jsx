@@ -4,8 +4,9 @@ import './styles.css';
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { Play } from './play/play';
-import { Scores } from './scores/scores';
+import { InputScores } from './InputScores/inputscores';
+import { Friends } from './Friends/Friends'
+import { Scores } from './Scores/scores';
 import { About } from './about/about';
 
 
@@ -13,22 +14,22 @@ export default function App() {
     return (
         <BrowserRouter>
         <header>
-            <p>Welcome to Wordle with Friends!</p>
+            <p>Wordle with Friends!</p>
             <nav>
                 <menu>
-                    <span><a class="inline" href="index.html">Home & Login</a></span>
-                    <span><a class="inline" href="InputScores.html">Input Scores</a></span>
-                    <span><a class="inline" href="manage_friend.html">Manage Friends</a></span>
-                    <span><a class="inline" href="disp_scores.html">View Scores</a></span>
-                    <span><a class="inline" href="about.html">About</a></span>
+                    <span><NavLink className="inline" to="index">Home & Login</NavLink></span>
+                    <span><NavLink className="inline" to="InputScores">Input Scores</NavLink></span>
+                    <span><NavLink className="inline" to="manage_friend">Manage Friends</NavLink></span>
+                    <span><NavLink className="inline" to="disp_scores">View Scores</NavLink></span>
+                    <span><NavLink className="inline" to="about">About</NavLink></span>
                 </menu>
             </nav>
         </header>
 
         <Routes>
             <Route path='/' element={<Login />} exact />
-            <Route path='/input-scores' element={<Input-Scores />} />
-            <Route path='/manage-friends' element={<Manage-Freinds />} />
+            <Route path='/input-scores' element={<InputScores />} />
+            <Route path='/manage-friends' element={<Friends />} />
             <Route path='/scores' element={<Scores />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
@@ -36,8 +37,12 @@ export default function App() {
 
         <footer>
             <span>Luke Martinez</span>
-            <a href="https://github.com/Aathok-Git/cs260-startup">Github</a>
+            <NavLink to="https://github.com/Aathok-Git/cs260-startup">Github</NavLink>
         </footer>
         </BrowserRouter>
     )
 }
+
+function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+  }
