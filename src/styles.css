@@ -16,17 +16,17 @@
 }
 
 .login-header {
-    background: #28d;
+    background: #004346;
     padding: 20px;
     font-size: 1.4em;
     font-weight: normal;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: #bbcbcb;
   }
 
   .login-container {
-    background: #ebebeb;
+    background: #bbcbcb;
     padding: 12px;
   }
 
@@ -51,7 +51,7 @@
 }
 
 .login button {
-    background: rgb(30, 137, 224);
+    background: #006065;
     border-color: transparent;
     color: #fff;
     cursor: pointer;
@@ -60,19 +60,19 @@
   }
 
 .login button:hover {
-    background:rgb(26, 117, 192)
+    background: #004346
 }
 
 .random-button {
-    background:#ebebeb;
+    background:#006065;
     border-color:gray;
-    color:#000;
+    color: antiquewhite;
     cursor:pointer;
     padding:1%;
 }
 
 .random-button:hover {
-    background:#dbdbdb;
+    background:#004346;
 }
 
 .users {
@@ -82,11 +82,11 @@
 
 
 html {
-    background-color:rgb(156, 164, 173);
+    background-color: #9590a8;
 }
 
 header {
-    background-color:darkblue;
+    background-color:#634b66;
     flex: 0, 80px;
     margin:0;
 }
@@ -100,7 +100,7 @@ header > p {
 
 
 menu {
-    background-color: darkblue;
+    background-color: #634b66;
     display:flex;
     flex-direction: row;
     justify-content: center;
@@ -134,21 +134,21 @@ table {
     margin-left: auto;
     margin-right: auto;
     flex:1;
-    border:2px solid black;
+    border:2px solid #18020c;
     border-collapse:collapse;
     width:75%;
 }
 
 tr {
     padding: 10%;
-    border:1px solid black;
+    border:1px solid #18020c;
 
 }
 
 td, th{
     padding:2%;
     text-align: center;
-    border:1px solid black;
+    border:1px solid #18020c;
 
 }
 
@@ -156,7 +156,7 @@ td, th{
 
 
 footer {
-    background: hsl(180, 30%, 15%);
+    background: #004346;
     position:absolute;
     bottom:0;
     width:100%;

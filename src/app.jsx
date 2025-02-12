@@ -13,7 +13,7 @@ export default function App() {
     return (
         <BrowserRouter>
         <header>
-            <p>Wordle with Friends!</p>
+            <p>W</p>
             <nav>
                 <menu>
                     <span><NavLink className="inline" to="">Home & Login</NavLink></span>
