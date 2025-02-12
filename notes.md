@@ -100,6 +100,22 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 ## JavaScript Notes
 -  Interpretive
 - On every web browser and here to stay.
+- VS code can use Node.js as a debugger.
+
+### Arrow Functions
+- If using curly braces, use the `return` statement
+```JS
+    () => 3; //Good syntax
+    () => { 3; } //Bad syntax
+    () => { return 3; } //Good Syntax
+    ```
+
+
+
+
+
+
+
 
 
 
