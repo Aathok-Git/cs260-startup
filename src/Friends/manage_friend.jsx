@@ -1,5 +1,5 @@
 import React from 'react';
-import "./about.css";
+import "../styles.css";
 
 export function Friends() {
     return (
