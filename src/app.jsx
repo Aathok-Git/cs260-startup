@@ -1,12 +1,11 @@
 import React from 'react';
-import 'bootstrap/dist/css/boostrap.min.css';
 import './styles.css';
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { InputScores } from './InputScores/inputscores';
-import { Friends } from './Friends/Friends'
-import { Scores } from './Scores/scores';
+import { InputScores } from './InputScores/InputScores';
+import { Friends } from './Friends/manage_friend'
+import { Scores } from './Scores/disp_scores';
 import { About } from './about/about';
 
 
@@ -17,10 +16,10 @@ export default function App() {
             <p>Wordle with Friends!</p>
             <nav>
                 <menu>
-                    <span><NavLink className="inline" to="index">Home & Login</NavLink></span>
+                    <span><NavLink className="inline" to="">Home & Login</NavLink></span>
                     <span><NavLink className="inline" to="InputScores">Input Scores</NavLink></span>
-                    <span><NavLink className="inline" to="manage_friend">Manage Friends</NavLink></span>
-                    <span><NavLink className="inline" to="disp_scores">View Scores</NavLink></span>
+                    <span><NavLink className="inline" to="Friends">Manage Friends</NavLink></span>
+                    <span><NavLink className="inline" to="Scores">View Scores</NavLink></span>
                     <span><NavLink className="inline" to="about">About</NavLink></span>
                 </menu>
             </nav>
@@ -28,9 +27,9 @@ export default function App() {
 
         <Routes>
             <Route path='/' element={<Login />} exact />
-            <Route path='/input-scores' element={<InputScores />} />
-            <Route path='/manage-friends' element={<Friends />} />
-            <Route path='/scores' element={<Scores />} />
+            <Route path='/inputscores' element={<InputScores />} />
+            <Route path='/Friends' element={<Friends />} />
+            <Route path='/Scores' element={<Scores />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
