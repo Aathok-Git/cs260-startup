@@ -5,9 +5,9 @@ export function Login() {
     return (
         <main>
             <h1>Welcome to Wordle Scoreboard!</h1>
-            <div class="login">
-              <h2 class="login-header">Log in</h2>
-              <form class="login-container" method="get" action="main.html">
+            <div className="login">
+              <h2 className="login-header">Log in</h2>
+              <form className="login-container" method="get" action="main.html">
               <div>
                 <span>User:</span><input type="text" placeholder="Enter Your Username" />
               </div>

@@ -4,13 +4,13 @@ import "../styles.css";
 export function Scores() {
     return (
         <main>
-            <div class="users">
+            <div className="users">
                 Currently logged in as:
-                <span class="user-name">Vargach_the_third</span>
+                <span className="user-name">Vargach_the_third</span>
               </div>
-              <ul class="user-name">
-                <li class="user-name">xX_OculusGrift_Xx just submitted their score!</li>
-                <li class="user-name">Hyllus_Diff69 just submitted their score!</li>
+              <ul className="user-name">
+                <li className="user-name">xX_OculusGrift_Xx just submitted their score!</li>
+                <li className="user-name">Hyllus_Diff69 just submitted their score!</li>
               </ul>
 
 

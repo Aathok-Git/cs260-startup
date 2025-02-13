@@ -9,7 +9,7 @@ export function About() {
             <p>Hey!</p> <p></p>
             <p>This is a project for my Web Programming class that I'm currently in. It's a wordle scorekeeping website where you can compare scores with your friends automatically.</p>
           
-            <button class="random-button" type="button">Click for a random word!</button> <div>word</div>
+            <button className="random-button" type="button">Click for a random word!</button> <div>word</div>
         </main>
     );
 }

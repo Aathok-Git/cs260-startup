@@ -3,13 +3,13 @@ import "../styles.css";
 
 export function InputScores() {
     return (<main>
-        <div class="users">
+        <div className="users">
             Currently logged in as:
-            <span class="user-name">Vargach_the_third</span>
+            <span className="user-name">Vargach_the_third</span>
           </div>
-        <div class="login">
-            <h2 class="login-header">Copy and paste your score from the Wordle <a href="https://www.nytimes.com/games/wordle">website</a> here!</h2>
-        <form class ="login-container" method="get" action="main.html">
+        <div className="login">
+            <h2 className="login-header">Copy and paste your score from the Wordle <a href="https://www.nytimes.com/games/wordle">website</a> here!</h2>
+        <form className ="login-container" method="get" action="main.html">
             <div>
               <span>Submit here!</span>
               <input type="text" placeholder="Your Wordle Score" />
