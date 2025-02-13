@@ -104,9 +104,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
+- [X] **Bundled using Vite** - I used Vite instead of live-server to debug, and deployReact.sh used it to bundle it for the webservice
+- [X] **Components** - I organized each component modelling the simonReact instruction and converted all my HTML to JSX
+- [X] **Router** - Used the router to navigate between webpages on a click. Works well.
 
 ## 🚀 React part 2: Reactivity
 
