@@ -109,13 +109,7 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
     () => { 3; } //Bad syntax
     () => { return 3; } //Good Syntax
     ```
-
-
-
-
-
-
-
+    
 
 
 
@@ -127,12 +121,20 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
  - increase device coverage
 
 
+### React Properties
+-  
+
+
+### React Components
+- 
+
+
 ## JSX Notes
 - combines JavaScript and HTML
 - JSX
-- ```JSX
-     const jsx = <p>Hello World</p>
-     ```
+```JSX
+    const jsx = <p>Hello World</p>
+```
 - Babel transpiles to JS
 - ```JS
      const jsx = React.createElement("p", null, "Hello World");
@@ -169,5 +171,47 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
             </div>
         );
     };
+```
+
+### Promises
+- Browser rendering is *single threaded*.
+- If you want it to look like it's running in parallel, you have to use promises.
+- Promises have several states
+    - pending - Currently running asynchronously
+    - fulfilled - completed successfully
+    - rejected - failed to complete
+- ```jsx
+    function callback(resolve) {
+        resolve('done'); // resolve is in the promise class, and the promise class passes it in.
+    }
+
+    const p = new Promise(callback);
+
+    p.then((result) => console.log(result));
     ```
 
+- ```jsx
+    const coinToss = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (Math.random() >0.1) {
+                resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+            } else {
+                reject('fell off table!');
+            }
+        }, 
+        Math.random()  > 0.5 ? 1000: 2000
+      );
+    });
+
+    // this is how it was originally done
+    coinToss
+        .then((result) => console.log(`Toss result: ${result}`));
+        .catch((err) => console.error(`Error: ${err}`));
+        .finally(() => console.log('1 Toss completed'));
+
+    // can also be written using the await syntax, but everything after it has to wait for the await to resolve.
+    const x = await coinToss;
+    console.log(`Toss result: ${x}`);
+        
+    ```
+- Await must be the top level module function or called from an async function.
