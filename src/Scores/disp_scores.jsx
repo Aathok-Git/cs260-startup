@@ -11,7 +11,7 @@ export function Scores(props) {
 
     const scoreBody = [];
     if (scores.length) {
-        for (const [i, score] of scores.entries()) {
+        for (const score of scores.entries()) {
         scoreBody.push(
             <tr>
             <td>{score.name}</td>
