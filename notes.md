@@ -215,3 +215,12 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
         
     ```
 - Await must be the top level module function or called from an async function.
+
+## Service Requests
+- browser requests static files from the Server
+- browser can also request from an external Service
+- `curl` is a command line browser and displays the html without rendering it
+- our service can also call other services
+
+###
+- 

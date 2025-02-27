@@ -1,12 +1,16 @@
 import React from 'react';
 import "../styles.css";
 
-export function Scores() {
+export function Scores(props) {
+    const userName = props.userName;
+
+    const [events, setEvent] = React.useState([]);
+
     return (
         <main>
             <div className="users">
                 Currently logged in as:
-                <span className="user-name">Vargach_the_third</span>
+                <span className="user-name">{userName}</span>
               </div>
               <ul className="user-name">
                 <li className="user-name">xX_OculusGrift_Xx just submitted their score!</li>
