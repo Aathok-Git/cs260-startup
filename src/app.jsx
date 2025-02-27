@@ -6,7 +6,7 @@ import { Login } from './login/login';
 import { InputScores } from './InputScores/InputScores';
 import { Friends } from './Friends/manage_friend'
 import { Scores } from './Scores/disp_scores';
-import { About } from './about/about';
+import { About } from './About/about';
 
 
 export default function App() {
