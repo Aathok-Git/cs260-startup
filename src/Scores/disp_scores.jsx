@@ -4,7 +4,7 @@ import "../styles.css";
 export function Scores(props) {
     const userName = props.userName;
 
-    const [friends, setFriends] = React.useState([]);
+    const [friendslist, setFriends] = React.useState([]);
 
     const [scores, setScores] = React.useState([]);
 
@@ -13,20 +13,15 @@ export function Scores(props) {
         if (scoresText) {
           setScores(JSON.parse(scoresText));
         }
-        const friendsText = localStorage.getItem('friends');
+        const friendsText = localStorage.getItem('friendslist');
         if (friendsText) {
             setFriends(JSON.parse(friendsText));
         }
       }, []);
 
-    
-
 
     const scoreBody = [];
-    const friendslist = [];
     if (scores.length && friendslist.length) {
-        
-        //code to get the friends list
 
         for (const score of scores.entries()) {
             const date = new Date().toLocaleDateString();
