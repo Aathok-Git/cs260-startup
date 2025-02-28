@@ -4,28 +4,54 @@ import "../styles.css";
 export function Scores(props) {
     const userName = props.userName;
 
-    const [events, setEvent] = React.useState([]);
+    const [friends, setFriends] = React.useState([]);
 
     const [scores, setScores] = React.useState([]);
 
+    React.useEffect(() => {
+        const scoresText = localStorage.getItem('scores');
+        if (scoresText) {
+          setScores(JSON.parse(scoresText));
+        }
+        const friendsText = localStorage.getItem('friends');
+        if (friendsText) {
+            setFriends(JSON.parse(friendsText));
+        }
+      }, []);
+
+    
+
 
     const scoreBody = [];
-    if (scores.length) {
+    const friendslist = [];
+    if (scores.length && friendslist.length) {
+        
+        //code to get the friends list
+
         for (const score of scores.entries()) {
-        scoreBody.push(
-            <tr>
-            <td>{score.name}</td>
-            <td>{score.todayscore}</td>
-            <td>{score.averagescore}</td>
-            </tr>
-        );
+            const date = new Date().toLocaleDateString();
+            if (score.date == date && score.name in friendslist) { // add check to see if person is in friends list
+                scoreBody.push(
+                    <tr>
+                        <td>{score.name}</td>
+                        <td>{score.todayscore}</td>
+                        <td>{score.averagescore}</td>
+                    </tr>
+                ); 
+            }
         }
-    } else {
+    } else if (!friendslist) {
         scoreBody.push(
         <tr>
             <td colSpan='3'>Add a friend to see their scores!</td>
         </tr>
         );
+    } else {
+        scoreBody.push(
+            <tr>
+                <td colSpan='3'>No scores submitted for today yet!</td>
+            </tr>
+        )
     }
 
     return (

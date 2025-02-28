@@ -37,7 +37,7 @@ export function InputScores() {
     return (<main>
         <div className="users">
             Currently logged in as:
-            <span className="user-name">Vargach_the_third</span>
+            <span className="user-name">{userName}</span>
           </div>
         <div className="login">
             <h2 className="login-header">Copy and paste your score from the Wordle <a href="https://www.nytimes.com/games/wordle">website</a> here!</h2>

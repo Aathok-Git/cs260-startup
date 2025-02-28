@@ -10,7 +10,7 @@ export function About(props) {
     }, [])
 
     async function getWord() {
-        setWord('Prawn')
+        setWord('Prawn') //Placeholder for endpoint connection
     }
 
 

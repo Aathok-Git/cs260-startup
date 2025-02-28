@@ -6,7 +6,7 @@ export function Friends() {
         <main>
             <div className="users">
                 Currently logged in as:
-                <span className="user-name">Vargach_the_third</span>
+                <span className="user-name">{userName}</span>
               </div>
               
             <div className="login">
