@@ -4,24 +4,32 @@ import "../styles.css";
 export function Friends(props) {
   const userName = props.userName;
   const [friendName, setFriendName] = React.useState('');
-
+  const [friendslist, setFriendsList] = React.useState([]);
+  // const arrayFriendsList = JSON.parse(localStorage.getItem(friendslist)); will add this line once database is up
 
   async function addFriend(friendName) {
-    localStorage.setItem("friendname", friendName)
+    const index = friendslist.indexOf(friendName);
+    if (index < 0) { // only execute code if the friend is not in the friend's list already
+      friendslist.push(friendName); 
+      localStorage.setItem("friendslist", friendslist);
+    }
   }
 
   async function removeFriend(friendName) {
-    localStorage.removeItem("friendname", friendName)
+    setFriendsList(JSON.parse(localStorage.getItem(friendslist)));
+    const index = friendslist.indexOf(friendName);
+    if (index > -1) { // only splice array when item is found
+      friendslist.splice(index, 1); // 2nd parameter means remove one item only
+}
+    localStorage.removeItem("friendname", friendName);
   }
-
-
 
 
     return (
         <main>
             <div className="users">
-                Currently logged in as:
-                <span className="user-name">{userName}</span>
+                Currently logged in as: 
+                <span className="user-name"> {userName}</span>
               </div>
               
             <div className="login">
