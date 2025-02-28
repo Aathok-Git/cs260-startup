@@ -4,6 +4,7 @@ import "../styles.css";
 
 export function InputScores(props) {
   const [score, setScore] = React.useState('');
+  const userName = props.userName;
 
   async function calculateAverage(score, old_average,times_submitted) {
     return float(old_average*times_submitted+score)/(times_submitted+1)
@@ -36,7 +37,7 @@ export function InputScores(props) {
             <span className="user-name">{userName}</span>
           </div>
         <div className="login">
-            <h2 className="login-header">Copy and paste your score from the Wordle <a href="https://www.nytimes.com/games/wordle">website</a> here!</h2>
+            <h2 className="login-header">Type in <ul>just the number of guesses</ul> you took to complete the <a href="https://www.nytimes.com/games/wordle">wordle.</a></h2>
         <form className ="login-container" method="get" action="main.html">
             <div>
               <span>Submit here!</span>
