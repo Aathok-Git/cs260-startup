@@ -2,16 +2,26 @@ import React from 'react';
 import "../styles.css";
 
 
-// import { Authenticated } from './authenticated';
-// import { AuthState } from './authState';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
 import { Unauthenticated } from './unauthenticated';
 
-export function Login() {
+export function Login({ userName, authState, onAuthChange } ) {
     return (
         <main>
-            <h1>Welcome to Wordle Scoreboard!</h1>
-            <Unauthenticated />
-          </main>
+            {authState !== AuthState.Unknown && <h1>Welcome to Wordle Scoreboard!</h1>}
+            {authState === AuthState.Authenticated && (
+                <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
+            )}
+            {authState === AuthState.Unauthenticated && (
+                <Unauthenticated
+                    userName={userName}
+                    onLogin={(loginUserName) => {
+                        onAuthChange(loginUserName, AuthState.Authenticated);
+                    }}
+                />
+            )}
+        </main>
     );
 }
 
