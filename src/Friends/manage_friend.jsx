@@ -1,7 +1,7 @@
 import React from 'react';
 import "../styles.css";
 
-export function Friends() {
+export function Friends(props) {
     return (
         <main>
             <div className="users">

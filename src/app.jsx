@@ -7,9 +7,16 @@ import { InputScores } from './InputScores/InputScores';
 import { Friends } from './Friends/manage_friend'
 import { Scores } from './Scores/disp_scores';
 import { About } from './About/about';
+import { AuthState } from './login/authState';
 
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
+
+
     return (
         <BrowserRouter>
         <header>
@@ -17,19 +24,31 @@ export default function App() {
             <nav>
                 <menu>
                     <span><NavLink className="inline" to="">Home & Login</NavLink></span>
+                    {authState === AuthState.Authenticated && (
                     <span><NavLink className="inline" to="InputScores">Input Scores</NavLink></span>
+                    )}
+                    {authState === AuthState.Authenticated && (
                     <span><NavLink className="inline" to="Friends">Manage Friends</NavLink></span>
+                    )}
+                    {authState === AuthState.Authenticated && (
                     <span><NavLink className="inline" to="Scores">View Scores</NavLink></span>
+                    )}
                     <span><NavLink className="inline" to="about">About</NavLink></span>
                 </menu>
             </nav>
         </header>
 
         <Routes>
-            <Route path='/' element={<Login />} exact />
-            <Route path='/inputscores' element={<InputScores />} />
-            <Route path='/Friends' element={<Friends />} />
-            <Route path='/Scores' element={<Scores />} />
+            <Route path='/' element={<Login 
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}/>} exact />
+            <Route path='/inputscores' element={<InputScores userName={userName} />} />
+            <Route path='/Friends' element={<Friends userName={userName}/>} />
+            <Route path='/Scores' element={<Scores userName={userName}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
