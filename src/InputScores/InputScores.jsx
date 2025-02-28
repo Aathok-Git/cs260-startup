@@ -6,14 +6,14 @@ import "../styles.css";
 
 
 
-async function calculateAverage(score, times_submitted) {
-
+async function calculateAverage(score, old_average,times_submitted) {
+  return float(old_average*times_submitted+score)/(times_submitted+1)
 }
 
 
-async function saveScore(score, times_submitted) {
+async function saveScore(score, old_average,times_submitted) {
   const date = new Date().toLocaleDateString();
-  const newScore = {name: userName, todayscore: score, averagescore: calculateAverage(score, times_submitted), times_submitted: times_submitted+1, date: date}
+  const newScore = {name: userName, todayscore: score, averagescore: calculateAverage(score, old_average,times_submitted), times_submitted: times_submitted+1, date: date}
 }
 
 
@@ -47,7 +47,7 @@ export function InputScores() {
               <input type="text" placeholder="Your Wordle Score" />
             </div>
             
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={()=>updateScoresLocal()}>Submit</button>
           </form>
           </div>
       </main>);
