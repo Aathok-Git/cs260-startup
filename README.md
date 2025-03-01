@@ -112,8 +112,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [X] **All functionality implemented or mocked out** - Stuff w/ scores and friends and authentication properly marked out
+- [X] **Hooks** - Used useffect and usestate, placeholder for webhook for getting a random word is implemented.
 
 ## 🚀 Service deliverable
 

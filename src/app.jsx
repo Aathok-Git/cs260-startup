@@ -15,8 +15,6 @@ export default function App() {
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
 
-
-
     return (
         <BrowserRouter>
         <header>
