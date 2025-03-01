@@ -22,10 +22,11 @@ export function Scores(props) {
 
     const scoreBody = [];
     if (scores.length && friendslist.length) {
-
-        for (const score of scores.entries()) {
+        let scoresToday=false;
+        for (const score of scores) {
             const date = new Date().toLocaleDateString();
-            if (score.date == date && score.name in friendslist) { // add check to see if person is in friends list
+            if (score.date == date && (friendslist.includes(score.name) || score.name == userName)) { // add check to see if person is in friends list
+                scoresToday = true;
                 scoreBody.push(
                     <tr>
                         <td>{score.name}</td>
@@ -35,18 +36,19 @@ export function Scores(props) {
                 ); 
             }
         }
+        if (!scoresToday) {
+            scoreBody.push(
+                <tr>
+                    <td colSpan='3'>No scores submitted for today yet!</td>
+                </tr>
+            )
+        }
     } else if (!friendslist) {
         scoreBody.push(
         <tr>
             <td colSpan='3'>Add a friend to see their scores!</td>
         </tr>
         );
-    } else {
-        scoreBody.push(
-            <tr>
-                <td colSpan='3'>No scores submitted for today yet!</td>
-            </tr>
-        )
     }
 
     return (
@@ -55,13 +57,6 @@ export function Scores(props) {
                 Currently logged in as:
                 <span className="user-name">{userName}</span>
               </div>
-              <ul className="user-name">
-                <li className="user-name">xX_OculusGrift_Xx just submitted their score!</li>
-                <li className="user-name">Hyllus_Diff69 just submitted their score!</li>
-              </ul>
-
-
-
             <table>
                 <thead>
                     <tr>
@@ -75,6 +70,12 @@ export function Scores(props) {
           </main>
     );
 }
+
+
+// <ul className="user-name">
+//                 <li className="user-name">xX_OculusGrift_Xx just submitted their score!</li>
+//                 <li className="user-name">Hyllus_Diff69 just submitted their score!</li>
+//               </ul>
 
 {/* <tr>
                         <td>Robin_Banks1</td>

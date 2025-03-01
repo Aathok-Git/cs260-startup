@@ -19,7 +19,7 @@ export function Friends(props) {
     const index = arrayFriendsList.indexOf(friendName);
     if (index < 0) { // only execute code if the friend is not in the friend's list already
      arrayFriendsList.push(friendName);
-      console.log(`DEBUG: ` + arrayFriendsList);
+      // console.log(`DEBUG: ` + arrayFriendsList);
       localStorage.setItem("friendslist", JSON.stringify(arrayFriendsList));
     }
   }
