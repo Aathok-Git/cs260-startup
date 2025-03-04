@@ -222,5 +222,30 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
 - `curl` is a command line browser and displays the html without rendering it
 - our service can also call other services
 
-###
-- 
+## Authentication
+- Authentication protocols
+    - OAuth (most common and supported)
+    - SAML
+    - CAS (church and byu uses)
+    - OIDC
+- Single sign on (SSO)
+    - 3rd party handles authentication and stores credentials
+    - Auth0
+    - Google
+    - Facebook
+    - Duo
+    - AWS
+- Custom Authentication
+    - Storeuser credentials
+    - Verify Credientials
+    - Restrict Access
+- Bcrypt (store credentals)
+    - Salt, hash, and compare
+    - Salt and hash encrypt passwords to keep them secure
+    - installed through npm
+- Cookies
+    - Useful to the backend server, but not the frontend js
+    - given to the browser, and returned upon request
+    - `Set-Cookie: token=x83yzi; Secure; HttpOnly; SameSite=Strict`
+    - use the `Secure`, `HttpOnly`, and `SameSite=Strict` attributes on every cookie
+    
