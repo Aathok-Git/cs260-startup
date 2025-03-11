@@ -5,10 +5,17 @@ import "../styles.css";
 export function Authenticated() {
 
     function logout() {
-        localStorage.removeItem('userName');
-        props.onLogout();
-        location.reload();
-      }
+        fetch(`/api/auth/logout`, {
+          method: 'delete',
+        })
+            .catch(() => {
+                // Logout failed. Assuming offline
+            })
+            .finally(() => {
+                localStorage.removeItem('userName');
+                props.onLogout();
+            });
+    }
 
     return (
         <div className='login'>

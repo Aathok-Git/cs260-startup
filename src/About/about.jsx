@@ -10,12 +10,16 @@ export function About(props) {
     }, [])
 
     async function getWord() {
+        setWord('Getting a  5 letter word...');
         fetch("https://random-word-api.herokuapp.com/word?length=5")
         .then((word) => word.json())
         .then((data) => {
             setWord(data);
         })
-        .catch();
+        .catch((error) => {
+            setWord('An error occured when fetching a word!');
+            console.error(error);
+        });
     }
 
 
