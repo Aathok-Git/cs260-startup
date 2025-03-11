@@ -33,7 +33,7 @@ export function Unauthenticated(props) {
     return (
         <div className="login">
             <h2 className="login-header">Log in</h2>
-            <form className="login-container" method="get" action="main.html">
+            <div className="login-container">
             <div>
                 <span>User:</span><input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Enter Your Username" />
             </div>
@@ -43,7 +43,7 @@ export function Unauthenticated(props) {
             </div>
             <div><button type="submit" onClick={() => loginUser()} disabled={!userName || !password}>Login</button></div>
             <div><button type="submit" onClick={() => createUser()} disabled={!userName || !password}>Create</button></div>
-            </form></div>
+            </div></div>
      )
 
 }

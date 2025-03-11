@@ -93,27 +93,59 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
+
+// calculates the average score for the score updater
+async function calculateAverage(score, old_average,times_submitted) {
+  return (old_average*times_submitted+score)/(times_submitted+1);
+}
+
+// helper function to format the score for storage
+async function saveScore(score, old_average,times_submitted, date) {
+  const newScore = {name: userName, todayscore: score, averagescore: await calculateAverage(score, old_average,times_submitted), times_submitted: times_submitted+1, date: date}
+  return newScore
+}
+
+// Updates the score list
+async function updateScores(todayScore) {
+  let updated = false;
+  const date = new Date().toLocaleDateString();
+  for (let scoreItem of scores) {
+    if (scoreItem.name === userName) {
+      updated = true;
+      if(scoreItem.date != date) {
+        scoreItem = await saveScore(todayScore, scoreItem.averagescore,scoreItem.times_submitted, date);
+      }
       break;
     }
   }
-
-  if (!found) {
-    scores.push(newScore);
-  }
-
-  if (scores.length > 10) {
-    scores.length = 10;
+  if(!updated) {
+    scores.push(await saveScore(todayScore,0,0, date));
   }
 
   return scores;
 }
+
+// updateScores considers a new score for inclusion in the high scores.
+// function updateScores(newScore) {
+//   let found = false;
+//   for (const [i, prevScore] of scores.entries()) {
+//     if (newScore.score > prevScore.score) {
+//       scores.splice(i, 0, newScore);
+//       found = true;
+//       break;
+//     }
+//   }
+
+//   if (!found) {
+//     scores.push(newScore);
+//   }
+
+//   if (scores.length > 10) {
+//     scores.length = 10;
+//   }
+
+//   return scores;
+// }
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
