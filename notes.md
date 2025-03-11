@@ -249,3 +249,35 @@ Use Route53 DNS to get the domain and use an EC2 Web Server
     - `Set-Cookie: token=x83yzi; Secure; HttpOnly; SameSite=Strict`
     - use the `Secure`, `HttpOnly`, and `SameSite=Strict` attributes on every cookie
     
+
+
+## Database Systems
+- *Service: Specialty*
+- MySQL: Relational Queries (Most used service)
+- Redis: Memory cached objects
+- ElasticSearch: Ranked free text
+- MongoDB: JSON objects (good for a startup and getting it done quick)
+- DynamoDb: Key value pairs
+- Neo4J: Graph based data
+- Influx DB: Time series data
+
+### MongoDB
+ - when connecting, using try, catch, and finally to do it. Try to connect, throw an error if it doesn't work, and finally close the connection.
+  - `collection.find()` will go find data for you
+    - Use this to get friend's scores, probably in a for-each-loop
+
+
+Values for player data storage for my startup
+```JSON
+    [
+        {
+            "_id": "userName",
+            "userName": "userName",
+            "friendsList": ["friend1userName", "friend2userName", "etc"],
+            "todayScore": "int",
+            "timesSubmitted": "int",
+            "averageScore": "float",
+            "date": "mm/dd/yyyy"
+        }
+    ]
+    ```
