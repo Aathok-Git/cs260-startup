@@ -10,7 +10,12 @@ export function About(props) {
     }, [])
 
     async function getWord() {
-        setWord('Prawn') //Placeholder for endpoint connection
+        fetch("https://random-word-api.herokuapp.com/word?length=5")
+        .then((word) => word.json())
+        .then((data) => {
+            setWord(data);
+        })
+        .catch();
     }
 
 
@@ -21,7 +26,7 @@ export function About(props) {
             <p>Hey!</p> <p></p>
             <p>This is a project for my Web Programming class that I'm currently in. It's a wordle scorekeeping website where you can compare scores with your friends automatically.</p>
           
-            <button className="random-button" type="button" onClick={() => getWord()}>Click for a random word!</button> <div>{word}</div>
+            <button className="random-button" type="button" onClick={() => getWord()}>Click for a random 5-letter word!</button> <div>{word}</div>
         </main>
     );
 }
