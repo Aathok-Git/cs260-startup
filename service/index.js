@@ -28,24 +28,24 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('email', req.body.email)) {
+  if (await findUser('userName', req.body.userName)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUser(req.body.email, req.body.password);
+    const user = await createUser(req.body.userName, req.body.password);
 
     setAuthCookie(res, user.token);
-    res.send({ email: user.email });
+    res.send({ userName: user.userName });
   }
 });
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('email', req.body.email);
+  const user = await findUser('userName', req.body.userName);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
       setAuthCookie(res, user.token);
-      res.send({ email: user.email });
+      res.send({ userName: user.userName });
       return;
     }
   }
@@ -124,6 +124,32 @@ async function updateScores(newScore) {
   return scores;
 }
 
+
+apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
+  let user = await findUser("userName", req.body.userName); //Gets the User
+  if (user) { 
+    let friendName = await findUser("userName", req.body.friendName); //Checks if friend is a registered user
+    if (friendName) {
+      
+    }
+    res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'})
+  }
+  res.status(406).send({ msg: 'Friend username does not exist' });
+})
+
+
+//getFriends searches the active user and returns their friends list
+apiRouter.get('/getFriends', verifyAuth, async (req, res) => {
+  let user = await findUser("userName", req.body.userName)
+  if (user){
+      res.send(user.friends);
+    }
+  
+});
+
+//get friends list
+
+
 // updateScores considers a new score for inclusion in the high scores.
 // function updateScores(newScore) {
 //   let found = false;
@@ -146,12 +172,13 @@ async function updateScores(newScore) {
 //   return scores;
 // }
 
-async function createUser(email, password) {
+async function createUser(userName, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
-    email: email,
+    userName: userName,
     password: passwordHash,
+    friends: [],
     token: uuid.v4(),
   };
   users.push(user);

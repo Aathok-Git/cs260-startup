@@ -12,7 +12,7 @@ export function InputScores(props) {
   
   async function saveScore(score) {
     const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, date: date };
+    const newScore = { name: userName, todayScore: score, date: date };
 
     await fetch('/api/score', {
       method: 'POST',

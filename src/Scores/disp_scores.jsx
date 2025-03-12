@@ -6,7 +6,18 @@ export function Scores(props) {
 
     const [friendslist, setFriends] = React.useState([]);
 
-    const [scores, setScores] = React.useState([]);
+    React.useEffect(() => {
+        fetch('/api/scores')
+          .then((response) => response.json())
+          .then((scores) => {
+            setScores(scores);
+          });
+        fetch('/api/getFriends', )
+        .then((response) => response.json())
+        .then((friends) => {
+            setFriends(friends);
+        });
+      }, []);
 
     React.useEffect(() => {
         const scoresText = localStorage.getItem('scores');
