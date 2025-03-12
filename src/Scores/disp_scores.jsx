@@ -4,28 +4,28 @@ import "../styles.css";
 export function Scores(props) {
     const userName = props.userName;
 
-    const [friendslist, setFriends] = React.useState([]);
+    const [friendsScores, setFriendsScores] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('/api/scores')
+        const name = {userName: userName};
+        fetch('/api/score', {
+            method: 'GET',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(name),
+          })
           .then((response) => response.json())
-          .then((scores) => {
-            setScores(scores);
+          .then((onlyFriendsScores) => {
+            setFriendsScores(onlyFriendsScores);
           });
-        fetch('/api/getFriends', )
-        .then((response) => response.json())
-        .then((friends) => {
-            setFriends(friends);
-        });
       }, []);
 
     
     const scoreBody = [];
-    if (scores.length && friendslist.length) {
+    if (friendsScores.length) {
         let scoresToday=false;
-        for (const score of scores) {
+        for (const score of friendsScores) {
             const date = new Date().toLocaleDateString();
-            if (score.date == date && (friendslist.includes(score.name) || score.name == userName)) { // add check to see if person is in friends list
+            if (score.date == date) { 
                 scoresToday = true;
                 scoreBody.push(
                     <tr>

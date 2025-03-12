@@ -124,7 +124,7 @@ async function updateScores(newScore) {
   return scores;
 }
 
-
+//adds a friend to the active user's friends list
 apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
   let user = await findUser("userName", req.body.userName); //Gets the index of the user
   if (user) { 
@@ -141,9 +141,9 @@ apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
 
 //removeFriends removes a friend from the friends list
 apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
-  let user = await findUser("userName", req.body.userName); //Gets the index of the user
+  let user = await findUser("userName", req.body.userName); 
   if (user) { 
-    let index = user.friends.findIndex(req.body.friendName);
+    let index = user.friends.findIndex(req.body.friendName); //gets the index in the friends list of the friend to be removed
     if (index) {
       user.friends.splice(index,1);
       return;
@@ -154,38 +154,33 @@ apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
 })
 
 
+async function getFriendsList(userName) {
+  let user = await findUser("userName", userName)
+  if (user) {
+      return user.friends;
+    }
+  return false;
+}
+
 //getFriends searches the active user and returns their friends list
 apiRouter.get('/getFriends', verifyAuth, async (req, res) => {
-  let user = await findUser("userName", req.body.userName)
-  if (user){
-      res.send(user.friends);
-    }
+  res.send(await getFriendsList(req.body.userName));
 });
 
-//get friends list
+//get friends scores
+apiRouter.get('/friendScores', verifyAuth, async (req, res) => {
+  const onlyFriendsScores = [];
+  onlyFriendsScores.push(await findScore("name", req.body.userName));
+  const friendslist = await getFriendsList(req.body.userName);
+  for (const name in friendslist) {
+    const friendScore = await findScore("name", name);
+    if(friendScore) {
+      onlyFriendsScores.push(friendScore)
+    }
+  }
+  res.send(onlyFriendsScores);
+})
 
-
-// updateScores considers a new score for inclusion in the high scores.
-// function updateScores(newScore) {
-//   let found = false;
-//   for (const [i, prevScore] of scores.entries()) {
-//     if (newScore.score > prevScore.score) {
-//       scores.splice(i, 0, newScore);
-//       found = true;
-//       break;
-//     }
-//   }
-
-//   if (!found) {
-//     scores.push(newScore);
-//   }
-
-//   if (scores.length > 10) {
-//     scores.length = 10;
-//   }
-
-//   return scores;
-// }
 
 async function createUser(userName, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -205,6 +200,12 @@ async function findUser(field, value) {
   if (!value) return null;
 
   return users.find((u) => u[field] === value);
+}
+
+async function findScore(field, value) {
+  if (!value) return [];
+
+  return scores.find((u) => u[field] === value);
 }
 
 // setAuthCookie in the HTTP response
