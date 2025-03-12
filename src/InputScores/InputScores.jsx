@@ -10,8 +10,18 @@ export function InputScores(props) {
     return (old_average*times_submitted+score)/(times_submitted+1);
   }
   
+  async function saveScore(score) {
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+
+    await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
+  }
   
-  async function saveScore(score, old_average,times_submitted, date) {
+  async function oldsaveScore(score, old_average,times_submitted, date) {
     const newScore = {name: userName, todayscore: score, averagescore: await calculateAverage(score, old_average,times_submitted), times_submitted: times_submitted+1, date: date}
     return newScore
   }
@@ -62,8 +72,8 @@ export function InputScores(props) {
               <input type="text" onChange={(e) => setScore(e.target.value)} placeholder="Your Wordle Score" />
             </div>
             
-            <button type="submit" onClick={()=>updateScoresLocal(parseInt(score))} disabled={!score_validator(score)}>Submit</button>
+            <button type="submit" onClick={()=>saveScore(parseInt(score))} disabled={!score_validator(score)}>Submit</button>
           </div>
         </div>
-      </main>);
+      </main>); 
 }

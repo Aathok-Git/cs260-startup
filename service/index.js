@@ -100,26 +100,25 @@ async function calculateAverage(score, old_average,times_submitted) {
 }
 
 // helper function to format the score for storage
-async function saveScore(score, old_average,times_submitted, date) {
+async function saveScore(userName, score, old_average, times_submitted, date) {
   const newScore = {name: userName, todayscore: score, averagescore: await calculateAverage(score, old_average,times_submitted), times_submitted: times_submitted+1, date: date}
   return newScore
 }
 
 // Updates the score list
-async function updateScores(todayScore) {
+async function updateScores(newScore) {
   let updated = false;
-  const date = new Date().toLocaleDateString();
   for (let scoreItem of scores) {
-    if (scoreItem.name === userName) {
+    if (scoreItem.name === newScore.userName) {
       updated = true;
-      if(scoreItem.date != date) {
-        scoreItem = await saveScore(todayScore, scoreItem.averagescore,scoreItem.times_submitted, date);
+      if(scoreItem.date != newScore.date) {
+        scoreItem = await saveScore(newScore.todayScore, scoreItem.averagescore,scoreItem.times_submitted, newScore.date);
       }
       break;
     }
   }
   if(!updated) {
-    scores.push(await saveScore(todayScore,0,0, date));
+    scores.push(await saveScore(newScore.userName, newScore.todayScore, 0, 0, newScore.date));
   }
 
   return scores;
