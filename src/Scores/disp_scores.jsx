@@ -19,18 +19,7 @@ export function Scores(props) {
         });
       }, []);
 
-    React.useEffect(() => {
-        const scoresText = localStorage.getItem('scores');
-        if (scoresText) {
-          setScores(JSON.parse(scoresText));
-        }
-        const friendsText = localStorage.getItem('friendslist');
-        if (friendsText) {
-            setFriends(JSON.parse(friendsText));
-        }
-      }, []);
-
-
+    
     const scoreBody = [];
     if (scores.length && friendslist.length) {
         let scoresToday=false;
@@ -81,30 +70,3 @@ export function Scores(props) {
           </main>
     );
 }
-
-
-// <ul className="user-name">
-//                 <li className="user-name">xX_OculusGrift_Xx just submitted their score!</li>
-//                 <li className="user-name">Hyllus_Diff69 just submitted their score!</li>
-//               </ul>
-
-{/* <tr>
-                        <td>Robin_Banks1</td>
-                        <td>3/6</td>
-                        <td>3.8</td>
-                    </tr>
-                    <tr>
-                        <td>xX_OculusGrift_Xx</td>
-                        <td>5/6</td>
-                        <td>5.9</td>
-                    </tr>
-                    <tr>
-                        <td>F.A.</td>
-                        <td>3/6</td>
-                        <td>2.9</td>
-                    </tr>
-                    <tr>
-                        <td>Hyllus_Diff69</td>
-                        <td>6/6</td>
-                        <td>4.8</td>
-                    </tr> */}

@@ -126,15 +126,31 @@ async function updateScores(newScore) {
 
 
 apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
-  let user = await findUser("userName", req.body.userName); //Gets the User
+  let user = await findUser("userName", req.body.userName); //Gets the index of the user
   if (user) { 
-    let friendName = await findUser("userName", req.body.friendName); //Checks if friend is a registered user
-    if (friendName) {
-      
+    if (await findUser("userName", req.body.friendName)) { //Checks if friend is a registered user
+      if (!user.friends.find(req.body.friendName)) {
+        user.friends.push(req.body.friendName);
+        return;
+      }
+      res.status(406).send({ msg: 'Friend is already added as a friend'})
     }
     res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'})
   }
-  res.status(406).send({ msg: 'Friend username does not exist' });
+})
+
+//removeFriends removes a friend from the friends list
+apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
+  let user = await findUser("userName", req.body.userName); //Gets the index of the user
+  if (user) { 
+    let index = user.friends.findIndex(req.body.friendName);
+    if (index) {
+      user.friends.splice(index,1);
+      return;
+    }
+    res.status(406).send({ msg: 'Friend is not in the friends list!'})
+  }
+  res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'})
 })
 
 
@@ -144,7 +160,6 @@ apiRouter.get('/getFriends', verifyAuth, async (req, res) => {
   if (user){
       res.send(user.friends);
     }
-  
 });
 
 //get friends list

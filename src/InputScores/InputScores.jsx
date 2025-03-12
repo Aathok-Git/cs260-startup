@@ -5,10 +5,6 @@ import "../styles.css";
 export function InputScores(props) {
   const [score, setScore] = React.useState('');
   const userName = props.userName;
-
-  async function calculateAverage(score, old_average,times_submitted) {
-    return (old_average*times_submitted+score)/(times_submitted+1);
-  }
   
   async function saveScore(score) {
     const date = new Date().toLocaleDateString();
@@ -21,11 +17,6 @@ export function InputScores(props) {
     });
   }
   
-  async function oldsaveScore(score, old_average,times_submitted, date) {
-    const newScore = {name: userName, todayscore: score, averagescore: await calculateAverage(score, old_average,times_submitted), times_submitted: times_submitted+1, date: date}
-    return newScore
-  }
-  
   function score_validator(score) {
     try{
       let numscore = parseInt(score);
@@ -35,30 +26,6 @@ export function InputScores(props) {
     }
   }
   
-  async function updateScoresLocal(todayScore) {
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-    let updated = false;
-    const date = new Date().toLocaleDateString();
-    for (let scoreItem of scores) {
-      if (scoreItem.name === userName) {
-        updated = true;
-        if(scoreItem.date != date) {
-          scoreItem = await saveScore(todayScore, scoreItem.averagescore,scoreItem.times_submitted, date);
-        }
-        break;
-      }
-    }
-    if(!updated) {
-      scores.push(await saveScore(todayScore,0,0, date));
-    }
-  
-    localStorage.setItem('scores', JSON.stringify(scores));
-  }
-
     return (<main>
         <div className="users">
             Currently logged in as: 

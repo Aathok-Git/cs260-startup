@@ -4,34 +4,25 @@ import "../styles.css";
 export function Friends(props) {
   const userName = props.userName;
   const [friendName, setFriendName] = React.useState('');
-  const [friendslist, setFriendsList] = React.useState([]);
-  const arrayFriendsList = JSON.parse(localStorage.getItem("friendslist")); // will add this line once database is up
-  console.log(friendName);
-
+  
 
   async function addFriend(friendName) {
-    // console.log(JSON.parse(localStorage.getItem("friendslist")));
-    // await setFriendsList(JSON.parse(localStorage.getItem("friendslist")));
-    // console.log(friendslist);
-    if (arrayFriendsList.length==0) {
-      setFriendsList([])
-    }
-    const index = arrayFriendsList.indexOf(friendName);
-    if (index < 0) { // only execute code if the friend is not in the friend's list already
-     arrayFriendsList.push(friendName);
-      // console.log(`DEBUG: ` + arrayFriendsList);
-      localStorage.setItem("friendslist", JSON.stringify(arrayFriendsList));
-    }
+    const friend = {userName: userName, friendName, friendName};
+    await fetch('/api/addFriend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(friend),
+    });
   }
-
-  async function removeFriend(friendName) { 
-    const index = arrayFriendsList.indexOf(friendName);
-    if (index > -1) { // only splice array when item is found
-      arrayFriendsList.splice(index, 1); // 2nd parameter means remove one item only
-      localStorage.setItem("friendslist", JSON.stringify(arrayFriendsList)); 
-    }
+ 
+  async function removeFriend(friendName) {
+    const friend = {userName: userName, friendName, friendName};
+    await fetch('/api/removeFriend', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(friend),
+    });
   }
-
 
     return (
         <main>
