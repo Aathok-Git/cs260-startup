@@ -148,7 +148,7 @@ apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
 apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
   let user = await findUser("userName", req.body.userName); 
   if (user) { 
-    let index = user.friends.findIndex(req.body.friendName); //gets the index in the friends list of the friend to be removed
+    let index = user.friends.findIndex((e) => e === req.body.friendName); //gets the index in the friends list of the friend to be removed
     if (index) {
       user.friends.splice(index,1);
       res.status(201).send({msg: 'Friend successfully removed'});
@@ -177,7 +177,7 @@ apiRouter.post('/friendScores', verifyAuth, async (req, res) => {
   const onlyFriendsScores = [];
   onlyFriendsScores.push(await findScore("name", req.body.userName));
   const friendslist = await getFriendsList(req.body.userName);
-  for (const name in friendslist) {
+  for (const name of friendslist) {
     const friendScore = await findScore("name", name);
     if(friendScore) {
       onlyFriendsScores.push(friendScore)

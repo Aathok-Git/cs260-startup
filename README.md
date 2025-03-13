@@ -119,11 +119,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+- [X] **Node.js/Express HTTP service** - Successfully connected frontend and backend
+- [X] **Static middleware for frontend** - Middleware successfully works
 - [X] **Calls to third party endpoints** - Calls a random word api in `about.jsx`
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [X] **Backend service endpoints** - Multiple PUSH and GET functions to access backend service.
+- [X] **Frontend calls service endpoints** - All frontend pages have at least one call to a service endpoint.
 
 ## 🚀 DB/Login deliverable
 

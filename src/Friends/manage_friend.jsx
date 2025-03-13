@@ -33,14 +33,14 @@ export function Friends(props) {
               
             <div className="login">
                 <h2 className="login-header">Add or Remove a friend from your list here!</h2>
-             <form className="login-container" method="get">
+             <div className="login-container">
                 <div>
                   <span>Input a Username:</span>
                   <input type="text" value={friendName} onChange={(e) => setFriendName(e.target.value)} placeholder="Enter Your Friend's Username"/>
                 </div>
-                <div><button type="submit" onClick={()=>addFriend(friendName)} disabled={!friendName}>Add</button></div>
-                <div><button type="submit" onClick={()=>removeFriend(friendName)} disabled={!friendName}>Remove</button></div>
-              </form>
+                <div><button type="submit" onClick={()=> addFriend(friendName)} disabled={!friendName}>Add</button></div>
+                <div><button type="submit" onClick={()=> removeFriend(friendName)} disabled={!friendName}>Remove</button></div>
+              </div>
             </div>
         </main>
     );
