@@ -78,9 +78,8 @@ apiRouter.get('/scores', verifyAuth, (_req, res) => {
 });
 
 // SubmitScore
-apiRouter.post('/score', verifyAuth, (req, res) => {
-  scores = updateScores(req.body);
-  res.send(scores);
+apiRouter.post('/score', verifyAuth, async (req, res) => {
+  await updateScores(req.body);
 });
 
 // Default error handler
@@ -102,7 +101,7 @@ async function calculateAverage(score, old_average,times_submitted) {
 // helper function to format the score for storage
 async function saveScore(userName, score, old_average, times_submitted, date) {
   const newScore = {name: userName, todayscore: score, averagescore: await calculateAverage(score, old_average,times_submitted), times_submitted: times_submitted+1, date: date}
-  return newScore
+  return newScore;
 }
 
 // Updates the score list
@@ -112,16 +111,15 @@ async function updateScores(newScore) {
     if (scoreItem.name === newScore.userName) {
       updated = true;
       if(scoreItem.date != newScore.date) {
-        scoreItem = await saveScore(newScore.todayScore, scoreItem.averagescore,scoreItem.times_submitted, newScore.date);
+        scoreItem = await saveScore(scoreItem.name, newScore.todayScore, scoreItem.averagescore,scoreItem.times_submitted, newScore.date);
       }
       break;
     }
   }
   if(!updated) {
-    scores.push(await saveScore(newScore.userName, newScore.todayScore, 0, 0, newScore.date));
+    const addScore = await saveScore(newScore.name, newScore.todayScore, 0, 0, newScore.date);
+    scores.push(addScore);
   }
-
-  return scores;
 }
 
 //adds a friend to the active user's friends list
@@ -168,7 +166,7 @@ apiRouter.get('/getFriends', verifyAuth, async (req, res) => {
 });
 
 //get friends scores
-apiRouter.get('/friendScores', verifyAuth, async (req, res) => {
+apiRouter.post('/friendScores', verifyAuth, async (req, res) => {
   const onlyFriendsScores = [];
   onlyFriendsScores.push(await findScore("name", req.body.userName));
   const friendslist = await getFriendsList(req.body.userName);

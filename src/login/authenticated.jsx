@@ -2,7 +2,7 @@ import React from 'react';
 import "../styles.css";
 
 
-export function Authenticated() {
+export function Authenticated(props) {
 
     function logout() {
         fetch(`/api/auth/logout`, {
@@ -14,6 +14,7 @@ export function Authenticated() {
             .finally(() => {
                 localStorage.removeItem('userName');
                 props.onLogout();
+                
             });
     }
 

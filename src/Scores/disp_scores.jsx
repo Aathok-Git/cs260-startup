@@ -8,8 +8,8 @@ export function Scores(props) {
 
     React.useEffect(() => {
         const name = {userName: userName};
-        fetch('/api/score', {
-            method: 'GET',
+        fetch('/api/friendScores', {
+            method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(name),
           })
@@ -43,7 +43,7 @@ export function Scores(props) {
                 </tr>
             )
         }
-    } else if (!friendslist) {
+    } else if (!friendsScores.length) {
         scoreBody.push(
         <tr>
             <td colSpan='3'>Add a friend to see their scores!</td>

@@ -7,7 +7,7 @@ export function Friends(props) {
   
 
   async function addFriend(friendName) {
-    const friend = {userName: userName, friendName, friendName};
+    const friend = {userName: userName, friendName: friendName};
     await fetch('/api/addFriend', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -16,7 +16,7 @@ export function Friends(props) {
   }
  
   async function removeFriend(friendName) {
-    const friend = {userName: userName, friendName, friendName};
+    const friend = {userName: userName, friendName: friendName};
     await fetch('/api/removeFriend', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

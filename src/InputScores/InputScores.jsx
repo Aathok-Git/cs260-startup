@@ -11,7 +11,7 @@ export function InputScores(props) {
     const newScore = { name: userName, todayScore: score, date: date };
 
     await fetch('/api/score', {
-      method: 'POST',
+      method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
     });
