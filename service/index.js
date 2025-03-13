@@ -79,7 +79,7 @@ apiRouter.get('/scores', verifyAuth, (_req, res) => {
 
 // SubmitScore
 apiRouter.post('/score', verifyAuth, async (req, res) => {
-  await updateScores(req.body);
+  await updateScores(req.body, res);
 });
 
 // Default error handler
@@ -105,20 +105,24 @@ async function saveScore(userName, score, old_average, times_submitted, date) {
 }
 
 // Updates the score list
-async function updateScores(newScore) {
-  let updated = false;
+async function updateScores(newScore, res) {
+  let updated =   false;
   for (let scoreItem of scores) {
-    if (scoreItem.name === newScore.userName) {
+    if (scoreItem.name === newScore.name) {
       updated = true;
       if(scoreItem.date != newScore.date) {
         scoreItem = await saveScore(scoreItem.name, newScore.todayScore, scoreItem.averagescore,scoreItem.times_submitted, newScore.date);
+        res.status(201).send({ msg: 'Score updated successfully' });
+        return;
       }
-      break;
+      res.status(409).send({ msg: 'Already submitted a score for today'});
+      return;
     }
   }
   if(!updated) {
     const addScore = await saveScore(newScore.name, newScore.todayScore, 0, 0, newScore.date);
     scores.push(addScore);
+    res.status(201).send({ msg: 'Score added successfully' });
   }
 }
 
@@ -127,13 +131,16 @@ apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
   let user = await findUser("userName", req.body.userName); //Gets the index of the user
   if (user) { 
     if (await findUser("userName", req.body.friendName)) { //Checks if friend is a registered user
-      if (!user.friends.find(req.body.friendName)) {
+      if (!user.friends.includes(req.body.friendName)) {
         user.friends.push(req.body.friendName);
+        res.status(201).send({ msg: 'Friend added successfully' });
         return;
       }
-      res.status(406).send({ msg: 'Friend is already added as a friend'})
+      res.status(406).send({ msg: 'Friend is already added as a friend'});
+      return;
     }
-    res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'})
+    res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'});
+    return;
   }
 })
 
@@ -144,7 +151,7 @@ apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
     let index = user.friends.findIndex(req.body.friendName); //gets the index in the friends list of the friend to be removed
     if (index) {
       user.friends.splice(index,1);
-      return;
+      res.status(201).send({msg: 'Friend successfully removed'});
     }
     res.status(406).send({ msg: 'Friend is not in the friends list!'})
   }
