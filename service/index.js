@@ -149,13 +149,16 @@ apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
   let user = await findUser("userName", req.body.userName); 
   if (user) { 
     let index = user.friends.findIndex((e) => e === req.body.friendName); //gets the index in the friends list of the friend to be removed
-    if (index) {
+    if (index >= 0) {
       user.friends.splice(index,1);
       res.status(201).send({msg: 'Friend successfully removed'});
+      return;
     }
-    res.status(406).send({ msg: 'Friend is not in the friends list!'})
+    res.status(406).send({ msg: 'Friend is not in the friends list!'});
+    return;
   }
-  res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'})
+  res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'});
+  return;
 })
 
 
@@ -175,7 +178,10 @@ apiRouter.get('/getFriends', verifyAuth, async (req, res) => {
 //get friends scores
 apiRouter.post('/friendScores', verifyAuth, async (req, res) => {
   const onlyFriendsScores = [];
-  onlyFriendsScores.push(await findScore("name", req.body.userName));
+  const selfScore =await findScore("name", req.body.userName);
+  if(selfScore) {
+    onlyFriendsScores.push(selfScore);
+  }
   const friendslist = await getFriendsList(req.body.userName);
   for (const name of friendslist) {
     const friendScore = await findScore("name", name);
