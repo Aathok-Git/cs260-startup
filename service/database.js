@@ -38,6 +38,10 @@ async function addScore(score) {
   return scoreCollection.insertOne(score);
 }
 
+async function updateScore(score) {
+  await scoreCollection.replaceOne({userName: score.userName}, score);
+}
+
 function getScore() {
   return scoreCollection.findOne({ userName: userName})
 }
@@ -48,5 +52,6 @@ module.exports = {
   addUser,
   updateUser,
   addScore,
+  updateScore,
   getScore,
 };

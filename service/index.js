@@ -41,6 +41,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ userName: user.userName });
       return;
@@ -71,8 +72,9 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // GetScores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
-  res.send(scores);
+apiRouter.get('/scores', verifyAuth, async (_req, res) => {
+  const scores = await DB.getHighScores();
+    res.send(scores);
 });
 
 // SubmitScore
@@ -102,8 +104,25 @@ async function saveScore(userName, score, old_average, times_submitted, date) {
   return newScore;
 }
 
-// Updates the score list
+// Updates the score DB (upgrade from prev version)
 async function updateScores(newScore, res) {
+  const score = getScore(newScore.name);
+  if (score) {
+    if (score.date != newScore.date) {
+      scoreItem = await saveScore(score.name, newScore.todayScore, score.averagescore,score.times_submitted, newScore.date);
+      
+    }
+  }
+}
+
+
+
+
+
+
+
+// Updates the score list
+async function oldupdateScores(newScore, res) {
   let updated =   false;
   for (let scoreItem of scores) {
     if (scoreItem.name === newScore.name) {
