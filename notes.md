@@ -281,3 +281,9 @@ Values for player data storage for my startup
         }
     ]
     ```
+
+## Websocket
+- Upgrade of HTTP
+- Either side can send data at any time
+- Efficient
+- Widespread support
