@@ -110,19 +110,22 @@ async function updateScores(newScore, res) {
   if (score) {
     if (score.date != newScore.date) {
       scoreItem = await saveScore(score.name, newScore.todayScore, score.averagescore,score.times_submitted, newScore.date);
-      
+      DB.updateScore(scoreitem);
+      res.status(201).send({ msg: 'Score updated successfully' });
+      return;
     }
+    res.status(409).send({ msg: 'Already submitted a score for today'});
+    return;
   }
+  const addScore = await saveScore(newScore.name, newScore.todayScore, 0, 0, newScore.date);
+  DB.addScore(addScore);
+  res.status(201).send({ msg: 'Score added successfully' });
 }
 
 
 
-
-
-
-
 // Updates the score list
-async function oldupdateScores(newScore, res) {
+/*async function oldupdateScores(newScore, res) {
   let updated =   false;
   for (let scoreItem of scores) {
     if (scoreItem.name === newScore.name) {
@@ -141,7 +144,7 @@ async function oldupdateScores(newScore, res) {
     scores.push(addScore);
     res.status(201).send({ msg: 'Score added successfully' });
   }
-}
+}*/
 
 //adds a friend to the active user's friends list
 apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
@@ -174,7 +177,7 @@ apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
     res.status(406).send({ msg: 'Friend is not in the friends list!'});
     return;
   }
-  res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'});
+  res.status(404).send({ msg: 'User not found'});
   return;
 })
 
@@ -219,21 +222,24 @@ async function createUser(userName, password) {
     friends: [],
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
 
 async function findUser(field, value) {
   if (!value) return null;
-
-  return users.find((u) => u[field] === value);
+  
+    if (field === 'token') {
+      return DB.getUserByToken(value);
+    }
+    return DB.getUser(value);
 }
 
-async function findScore(field, value) {
+async function findScore(value) {
   if (!value) return [];
 
-  return scores.find((u) => u[field] === value);
+  return DB.getScore(value);
 }
 
 // setAuthCookie in the HTTP response

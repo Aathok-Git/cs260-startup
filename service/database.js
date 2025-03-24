@@ -42,7 +42,7 @@ async function updateScore(score) {
   await scoreCollection.replaceOne({userName: score.userName}, score);
 }
 
-function getScore() {
+function getScore(userName) {
   return scoreCollection.findOne({ userName: userName})
 }
 
