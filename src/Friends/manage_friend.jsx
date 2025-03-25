@@ -12,6 +12,15 @@ export function Friends(props) {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(friend),
+    })
+    .then((response) => {
+      if (response.status == 406) {
+        window.alert(`The friend username: ${friendName} is not registered on WordleWithFriends`);
+      } else if (response.status == 409){
+        window.alert(`${friendName} is already in your friends list!`);
+      } else if (response.status == 404) {
+        window.alert("Your user wasn't found! Please try logging in again.");
+      }
     });
   }
  

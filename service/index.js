@@ -148,7 +148,7 @@ async function updateScores(newScore, res) {
 
 //adds a friend to the active user's friends list
 apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
-  let user = await findUser("userName", req.body.userName); //Gets the index of the user
+  let user = await findUser("userName", req.body.userName); 
   if (user) { 
     if (await findUser("userName", req.body.friendName)) { //Checks if friend is a registered user
       if (!user.friends.includes(req.body.friendName)) {
@@ -156,12 +156,13 @@ apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
         res.status(201).send({ msg: 'Friend added successfully' });
         return;
       }
-      res.status(406).send({ msg: 'Friend is already added as a friend'});
+      res.status(409).send({ msg: 'Friend is already added as a friend'});
       return;
     }
     res.status(406).send({ msg: 'Friend is not registered on WordleWithFriends'});
     return;
   }
+  res.status(404).send({msg: 'User not found'});
 })
 
 //removeFriends removes a friend from the friends list
