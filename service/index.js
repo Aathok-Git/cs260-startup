@@ -106,7 +106,7 @@ async function saveScore(userName, score, old_average, times_submitted, date) {
 
 // Updates the score DB (upgrade from prev version)
 async function updateScores(newScore, res) {
-  const score = getScore(newScore.name);
+  const score = await findScore(newScore.name);
   if (score) {
     if (score.date != newScore.date) {
       scoreItem = await saveScore(score.name, newScore.todayScore, score.averagescore,score.times_submitted, newScore.date);
@@ -153,6 +153,7 @@ apiRouter.post('/addFriend', verifyAuth, async (req, res) => {
     if (await findUser("userName", req.body.friendName)) { //Checks if friend is a registered user
       if (!user.friends.includes(req.body.friendName)) {
         user.friends.push(req.body.friendName);
+        DB.updateUser(user);
         res.status(201).send({ msg: 'Friend added successfully' });
         return;
       }
@@ -172,13 +173,14 @@ apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
     let index = user.friends.findIndex((e) => e === req.body.friendName); //gets the index in the friends list of the friend to be removed
     if (index >= 0) {
       user.friends.splice(index,1);
-      res.status(201).send({msg: 'Friend successfully removed'});
+      DB.updateUser(user);
+      res.status(201).send({msg: `${req.body.friendName} successfully removed`});
       return;
     }
-    res.status(406).send({ msg: 'Friend is not in the friends list!'});
+    res.status(406).send({ msg: `${req.body.friendName} is not in the friends list!`});
     return;
   }
-  res.status(404).send({ msg: 'User not found'});
+  res.status(404).send({ msg: `User ${req.body.userName} not found`});
   return;
 })
 
@@ -199,13 +201,13 @@ apiRouter.get('/getFriends', verifyAuth, async (req, res) => {
 //get friends scores
 apiRouter.post('/friendScores', verifyAuth, async (req, res) => {
   const onlyFriendsScores = [];
-  const selfScore =await findScore("name", req.body.userName);
+  const selfScore =await findScore(req.body.userName);
   if(selfScore) {
     onlyFriendsScores.push(selfScore);
   }
   const friendslist = await getFriendsList(req.body.userName);
   for (const name of friendslist) {
-    const friendScore = await findScore("name", name);
+    const friendScore = await findScore(name);
     if(friendScore) {
       onlyFriendsScores.push(friendScore)
     }

@@ -14,10 +14,10 @@ export function InputScores(props) {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
-    })
+    });
     
     if (response?.status === 409) {
-      window.alert("You've already submitted a score today!")
+      alert("You've already submitted a score today!");
     };
   }
   

@@ -13,13 +13,14 @@ export function Friends(props) {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(friend),
     })
-    
-    if (response?.status == 406) {
-      window.alert(`The friend username: ${friendName} is not registered on WordleWithFriends`);
+    if (response?.status == 201) {
+      alert(`${friendName} added successfully to your Friends list!`)
+    } else if (response?.status == 406) {
+      alert(`The friend username: ${friendName} is not registered on WordleWithFriends`);
     } else if (response?.status == 409){
-      window.alert(`${friendName} is already in your friends list!`);
+      alert(`${friendName} is already in your friends list!`);
     } else if (response?.status == 404) {
-      window.alert("Your user wasn't found! Please try logging in again.");
+      alert("Your user wasn't found! Please try logging in again.");
     }
   }
  
@@ -31,12 +32,15 @@ export function Friends(props) {
       body: JSON.stringify(friend),
     });
 
-    if (response?.status == 406) {
+    if (response?.status == 201) {
       const body = await response.json();
-      window.alert(body.msg);
+      alert(body.msg);
+    } else if (response?.status == 406) {
+      const body = await response.json();
+      alert(body.msg);
     } else if (response?.status == 404) {
       const body = await response.json();
-      window.alert(body.msg);
+      alert(body.msg);
     }
   }
 

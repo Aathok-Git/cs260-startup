@@ -42,8 +42,8 @@ async function updateScore(score) {
   await scoreCollection.replaceOne({userName: score.userName}, score);
 }
 
-function getScore(userName) {
-  return scoreCollection.findOne({ userName: userName})
+async function getScore(userName) {
+  return scoreCollection.findOne({ name: userName})
 }
 
 module.exports = {
