@@ -27,6 +27,7 @@ export function Unauthenticated(props) {
         } else {
           const body = await response.json();
           console.error(body.msg);
+          window.alert(body.msg);
         }
       }
     

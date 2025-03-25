@@ -8,29 +8,36 @@ export function Friends(props) {
 
   async function addFriend(friendName) {
     const friend = {userName: userName, friendName: friendName};
-    await fetch('/api/addFriend', {
+    const response = await fetch('/api/addFriend', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(friend),
     })
-    .then((response) => {
-      if (response.status == 406) {
-        window.alert(`The friend username: ${friendName} is not registered on WordleWithFriends`);
-      } else if (response.status == 409){
-        window.alert(`${friendName} is already in your friends list!`);
-      } else if (response.status == 404) {
-        window.alert("Your user wasn't found! Please try logging in again.");
-      }
-    });
+    
+    if (response?.status == 406) {
+      window.alert(`The friend username: ${friendName} is not registered on WordleWithFriends`);
+    } else if (response?.status == 409){
+      window.alert(`${friendName} is already in your friends list!`);
+    } else if (response?.status == 404) {
+      window.alert("Your user wasn't found! Please try logging in again.");
+    }
   }
  
   async function removeFriend(friendName) {
     const friend = {userName: userName, friendName: friendName};
-    await fetch('/api/removeFriend', {
+    const response = await fetch('/api/removeFriend', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(friend),
     });
+
+    if (response?.status == 406) {
+      const body = await response.json();
+      window.alert(body.msg);
+    } else if (response?.status == 404) {
+      const body = await response.json();
+      window.alert(body.msg);
+    }
   }
 
     return (

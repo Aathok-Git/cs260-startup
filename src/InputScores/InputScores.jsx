@@ -10,16 +10,15 @@ export function InputScores(props) {
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, todayScore: score, date: date };
 
-    await fetch('/api/score', {
+    const response = await fetch('/api/score', {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
     })
-    .then((response) => {
-      if (response.status == 409) {
-        window.alert("You've already submitted a score today!")
-      }
-    });
+    
+    if (response?.status === 409) {
+      window.alert("You've already submitted a score today!")
+    };
   }
   
   function score_validator(score) {
