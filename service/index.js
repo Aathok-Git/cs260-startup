@@ -111,7 +111,7 @@ async function updateScores(newScore, res) {
     if (score.date != newScore.date) {
       scoreItem = await saveScore(score.name, newScore.todayScore, score.averagescore,score.times_submitted, newScore.date);
       DB.updateScore(scoreitem);
-      res.status(201).send({ msg: 'Score updated successfully' });
+      res.status(201).send({ msg: 'Score submitted successfully' });
       return;
     }
     res.status(409).send({ msg: 'Already submitted a score for today'});
@@ -177,7 +177,7 @@ apiRouter.post('/removeFriend', verifyAuth, async (req, res) => {
       res.status(201).send({msg: `${req.body.friendName} successfully removed`});
       return;
     }
-    res.status(406).send({ msg: `${req.body.friendName} is not in the friends list!`});
+    res.status(406).send({ msg: `${req.body.friendName} is not in the Friends list!`});
     return;
   }
   res.status(404).send({ msg: `User ${req.body.userName} not found`});

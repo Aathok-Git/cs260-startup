@@ -16,8 +16,13 @@ export function InputScores(props) {
       body: JSON.stringify(newScore),
     });
     
-    if (response?.status === 409) {
-      alert("You've already submitted a score today!");
+    if (response?.status === 201) {
+      const body = await response.json();
+      alert(body.msg);
+    }
+    else if (response?.status === 409) {
+      const body = await response.json();
+      alert(body.msg);
     };
   }
   
