@@ -39,7 +39,7 @@ async function addScore(score) {
 }
 
 async function updateScore(score) {
-  await scoreCollection.updateOne({userName: score.userName}, { $set: score});
+  await scoreCollection.updateOne({name: score.name}, { $set: score});
 }
 
 async function getScore(userName) {
