@@ -109,8 +109,8 @@ async function updateScores(newScore, res) {
   const score = await findScore(newScore.name);
   if (score) {
     if (score.date != newScore.date) {
-      scoreItem = await saveScore(score.name, newScore.todayScore, score.averagescore,score.times_submitted, newScore.date);
-      DB.updateScore(scoreitem);
+      const scoreItem = await saveScore(score.name, newScore.todayScore, score.averagescore,score.times_submitted, newScore.date);
+      DB.updateScore(scoreItem);
       res.status(201).send({ msg: 'Score submitted successfully' });
       return;
     }
