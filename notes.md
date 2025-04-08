@@ -282,8 +282,14 @@ Values for player data storage for my startup
     ]
     ```
 
+
 ## Websocket
 - Upgrade of HTTP
 - Either side can send data at any time
 - Efficient
 - Widespread support
+
+## Typescript
+- Similar to JS, but different.
+- Adds typing
+- Having typed variables makes it much easier to debug and find errors, but also makes the code clunkier to read.
