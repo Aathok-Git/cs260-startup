@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScoreEvent, ScoreNotifier } from '../InputScores/ScoreNotifier';
 import "../styles.css";
 
 
@@ -15,8 +16,12 @@ export function InputScores(props) {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
     });
+
+    if (response?.status === 200) {
+      ScoreNotifier.broadcastEvent
+    }
     
-    if (response?.status === 201) {
+    else if (response?.status === 201) {
       const body = await response.json();
       alert(body.msg);
     }
@@ -36,10 +41,6 @@ export function InputScores(props) {
   }
   
     return (<main>
-        <div className="users">
-            Currently logged in as: 
-            <span className="user-name">{userName}</span>
-          </div>
         <div className="login">
             <h2 className="login-header">Type in <ul>just the number of guesses</ul> you took to complete the <a href="https://www.nytimes.com/games/wordle">wordle.</a></h2>
           <div className ="login-container">

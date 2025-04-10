@@ -8,6 +8,7 @@ import { Friends } from './Friends/manage_friend'
 import { Scores } from './Scores/disp_scores';
 import { About } from './About/about';
 import { AuthState } from './login/authState';
+import { Players } from './players';
 
 
 export default function App() {
@@ -36,6 +37,11 @@ export default function App() {
             </nav>
         </header>
 
+        <div className="users">
+            Currently logged in as: 
+            <span className="user-name">{userName? userName: "Not logged in"}</span>
+        </div>
+        
         <Routes>
             <Route path='/' element={<Login 
                 userName={userName}

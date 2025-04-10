@@ -53,10 +53,7 @@ export function Scores(props) {
 
     return (
         <main>
-            <div className="users">
-                Currently logged in as: 
-                <span className="user-name">{userName}</span>
-              </div>
+            
             <table>
                 <thead>
                     <tr>
