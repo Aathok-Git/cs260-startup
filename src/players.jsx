@@ -25,7 +25,7 @@ export function Players(props) {
     for (const [i, event] of events.entries()) {
       let message = 'unknown';
       if (event.type === ScoreEvent.Submit) {
-        message = `submitted a score of ${event.value.score}`;
+        message = ` submitted a score of ${event.value}`;
       }
 
       messageArray.push(

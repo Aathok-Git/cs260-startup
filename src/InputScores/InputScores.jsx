@@ -19,7 +19,7 @@ export function InputScores(props) {
   
     if (response?.status === 201) {
       const body = await response.json();
-      ScoreNotifier.broadcastEvent(userName, ScoreEvent.Submit, newScore.score);
+      ScoreNotifier.broadcastEvent(userName, ScoreEvent.Submit, newScore.todayScore);
       alert(body.msg);
     }
     else if (response?.status === 409) {
