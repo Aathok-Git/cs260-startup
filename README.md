@@ -140,7 +140,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] **Backend listens for WebSocket connection** - Implemented in the bottom of index.js
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
+- [X] **Frontend makes WebSocket connection** - Used the console log to make sure this worked while I was debugging. It works.
+- [X] **Data sent over WebSocket connection** - Sends data only when a score is successfully submitted
+- [X] **WebSocket data displayed** - Displays the username and score of whomever submits a score.
 - [X] **Application is fully functional** - Application works as intended.
