@@ -16,13 +16,10 @@ export function InputScores(props) {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
     });
-
-    if (response?.status === 200) {
-      ScoreNotifier.broadcastEvent
-    }
-    
-    else if (response?.status === 201) {
+  
+    if (response?.status === 201) {
       const body = await response.json();
+      ScoreNotifier.broadcastEvent(userName, ScoreEvent.Submit, newScore.score);
       alert(body.msg);
     }
     else if (response?.status === 409) {

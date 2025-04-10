@@ -37,10 +37,12 @@ export default function App() {
             </nav>
         </header>
 
-        <div className="users">
+        {/* <div className="users">
             Currently logged in as: 
             <span className="user-name">{userName? userName: "Not logged in"}</span>
-        </div>
+        </div> */}
+
+        <Players userName={userName} />
         
         <Routes>
             <Route path='/' element={<Login 
